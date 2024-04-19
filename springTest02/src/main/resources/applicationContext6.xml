@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean class="com.akai.pojo.Dept" id="dept"></bean>
+    <!--
+    autowire 属性控制自动将容器中的对象注入到当前对象的属性上
+    byName 根据目标id值和属性名注入,要保证当前对象的属性名和目标对象的id值一致
+    byType 根据类型注入,要保证相同类型的目标对象在容器中只有一个实例
+    -->
+    <bean class="com.akai.pojo.Emp" id="emp" autowire="byName"></bean>
+</beans>
