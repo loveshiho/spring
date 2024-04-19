@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="birthday" class="java.util.Date"></bean>
+    <bean id="mouse" class="com.akai.pojo.Mouse">
+        <property name="name" value="Jerry"></property>
+        <property name="brithDay" ref="birthday"></property>
+    </bean>
+    <bean id="cat" class="com.akai.pojo.Cat">
+        <property name="name" value="Tom"></property>
+        <property name="mouse" ref="mouse"></property>
+    </bean>
+    <bean id="cat2" class="com.akai.pojo.Cat">
+        <property name="name" value="Tom2"></property>
+        <property name="mouse">
+            <bean id="mouse2" class="com.akai.pojo.Mouse">
+                <property name="name" value="Jerry2"></property>
+                <property name="brithDay">
+                    <bean id="birthday2" class="java.util.Date"></bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+</beans>
