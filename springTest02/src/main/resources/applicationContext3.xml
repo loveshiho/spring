@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+    <bean id="student1" class="com.akai.pojo.Student">
+        <property name="books">
+            <!--数组属性注入-->
+            <array>
+                <value>Java</value>
+                <value>MySql</value>
+                <value>Spring</value>
+            </array>
+        </property>
+        <property name="bookSet">
+            <!--set集合注入-->
+            <set>
+                <value>Java</value>
+                <value>MySql</value>
+                <value>Spring</value>
+            </set>
+        </property>
+        <property name="bookList">
+            <!--list集合注入-->
+            <list>
+                <value>Java</value>
+                <value>MySql</value>
+                <value>Spring</value>
+            </list>
+        </property>
+        <property name="bookMap">
+            <!--map集合注入-->
+            <map>
+                <entry key="Java" value="名侦探柯南"></entry>
+                <entry key="MySQL" value="灰原哀"></entry>
+                <entry key="Spring" value="haibara"></entry>
+            </map>
+        </property>
+        <!--list对象集合注入-->
+        <property name="bookList2" ref="outerbookList"></property>
+    </bean>
+
+    <!--定义公共集合-->
+    <util:list id="outerbookList">
+        <!--声明多个Book对象-->
+        <bean id="b1" class="com.akai.pojo.Book" p:bname="JAVA" p:author="曹中泰"></bean>
+        <bean id="b2" class="com.akai.pojo.Book" p:bname="Go" p:author="曹中泰"></bean>
+        <bean id="b3" class="com.akai.pojo.Book" p:bname="JVM" p:author="曹中泰"></bean>
+    </util:list>
+</beans>
