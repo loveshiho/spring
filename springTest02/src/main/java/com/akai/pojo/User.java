@@ -13,9 +13,14 @@ public class User {
                 ", password='" + password + '\'' +
                 '}';
     }
-
+    public void initUser(){
+        System.out.println("第三步:User初始化");
+    }
+    public void destoryUser(){
+        System.out.println("第五步:User销毁");
+    }
     public User() {
-        System.out.println("noArgConstructor");
+        System.out.println("第一步:User构造");
     }
 
     public User(Integer userid, String username, String password) {
@@ -26,17 +31,17 @@ public class User {
     }
 
     public void setUserid(Integer userid) {
-        System.out.println("setUserid");
+        System.out.println("第二步:User赋值");
         this.userid = userid;
     }
 
     public void setUsername(String username) {
-        System.out.println("setUsername");
+        System.out.println("第二步:User赋值");
         this.username = username;
     }
 
     public void setPassword(String password) {
-        System.out.println("setpassword");
+        System.out.println("第二步:User赋值");
         this.password = password;
     }
 }
