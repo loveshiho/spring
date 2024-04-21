@@ -23,7 +23,7 @@ public class EmpDaoImpl implements EmpDao {
          * 2 返回值类型字节码
          * */
         String sql = "select count(1) from emp";
-        return  jdbcTemplate.queryForObject(sql, Integer.class);
+        return jdbcTemplate.queryForObject(sql, Integer.class);
     }
 
     @Override
@@ -53,5 +53,30 @@ public class EmpDaoImpl implements EmpDao {
         BeanPropertyRowMapper<Emp> rowMapper = new BeanPropertyRowMapper<>(Emp.class);
         List<Emp> query = jdbcTemplate.query(sql, rowMapper, deptno);
         return query;
+    }
+
+    @Override
+    public int addEmp(Emp emp) {
+        /*增删改
+         * 统统用update方法 两个参数
+         * 1 SQL语句
+         * 2 SQL语句需要的参数 (可变参数)
+         * */
+        String sql = "insert into emp values(DEFAULT,?,?,?,?,?,?,?)";
+        Object[] args = {emp.getEname(), emp.getJob(), emp.getMgr(), emp.getHiredate(), emp.getSal(), emp.getComm(), emp.getDeptno()};
+        return jdbcTemplate.update(sql, args);
+    }
+
+    @Override
+    public int updateEmp(Emp emp) {
+        String sql = "update emp set ename = ?, job = ?, mgr= ?, hiredate = ?, sal = ?, comm=  ?, deptno = ? where empno = ?";
+        Object[] args = {emp.getEname(), emp.getJob(), emp.getMgr(), emp.getHiredate(), emp.getSal(), emp.getComm(), emp.getDeptno(), emp.getEmpno()};
+        return jdbcTemplate.update(sql, args);
+    }
+
+    @Override
+    public int deleteEmp(int empno) {
+        String sql = "delete from emp where empno = ?";
+        return jdbcTemplate.update(sql, empno);
     }
 }

@@ -26,4 +26,19 @@ public class EmpServiceImpl implements EmpService {
     public List<Emp> findByDeptNo(int deptno) {
         return empDao.findByDeptNo(deptno);
     }
+
+    @Override
+    public int addEmp(Emp emp) {
+        return empDao.addEmp(emp);
+    }
+
+    @Override
+    public int updateEmp(Emp emp) {
+        return empDao.updateEmp(emp);
+    }
+
+    @Override
+    public int deleteEmp(int empno) {
+        return empDao.deleteEmp(empno);
+    }
 }
