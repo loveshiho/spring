@@ -16,7 +16,7 @@ public class AccountServiceImpl implements AccountService {
     public int transMoney(int from, int to, int money) {
         int rows = 0;
         rows += accountDao.transMoney(from, 0 - money);
-        int i  = 1 / 0;
+//        int i  = 1 / 0;
         rows += accountDao.transMoney(to, money);
         return rows;
     }
